@@ -1,0 +1,36 @@
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card text-center">
+                <div class="card">
+                    <h5 class="card-header">CREAR PERSONA</h5>
+                    <div class="card-body">
+                        <form action="/add" method="post" class="row g-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" required>
+                                <label for="floatingInput" class="ms-2">Nombre</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Nombre" required>
+                                <label for="floatingInput" class="ms-2">Apellido</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" name="age" id="age" placeholder="Nombre" required>
+                                <label for="floatingInput" class="ms-2">Edad</label>
+                            </div>
+
+
+                            <div class="col-12 text-end">
+                                <a class="btn btn-secondary btn-lg" href="/list" role="button">Cancelar</a>                               
+                                <button class="btn btn-primary btn-lg">Registrar</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,111 @@
+
+<div class="container mt-5">
+{{#if categorias}}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Activo</th>
+                    <th scope="col" class="col-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+
+                {{#each categorias}}
+
+                    <tr>
+                        <td>{{ nombre }}</td>
+                        <td>{{ activo }}</td>
+
+                        <td class="d-flex justify-content-start align-items-center">
+                            <a href="/edit/{{ id }}">
+                                <i class="fa-solid fa-pen-to-square text-warning"></i>
+                            </a>
+                            <span class="mx-3">|</span>
+                            <a href="/delete/{{ id }}">
+                                <i class="fa-solid fa-trash text-danger"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                {{/each}}               
+                
+            </tbody>
+        </table>
+{{ else }} 
+    <div class="card text-center mx-auto">
+        <div class="card-header">
+            <h3>
+                Debes crear una persona</h3>
+        </div>
+        <div class="card-body">
+            <p>Presiona este boton para que puedas registrar a una persona en la aplicacion</p>
+            <a href="/add" class="btn btn-primary">
+                Ir a crear</a>
+        </div>
+    </div>
+{{/if}}
+</div>
+
+
+
+
+{{!-- <div class="container mt-5">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Age</th>
+                    <th scope="col" class="col-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+
+                <tr>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td class="d-flex justify-content-start align-items-center">
+                        <a href="/edit">
+                            <i class="fa-solid fa-pen-to-square text-warning"></i>
+                        </a>
+                        <span class="mx-3">|</span>
+                        <a href="/delete/{{ id }}">
+                            <i class="fa-solid fa-trash text-danger"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td class="d-flex justify-content-start align-items-center">
+                        <a href="/edit/{{ id }}">
+                            <i class="fa-solid fa-pen-to-square text-warning"></i>
+                        </a>
+                        <span class="mx-3">|</span>
+                        <a href="/delete/{{ id }}">
+                            <i class="fa-solid fa-trash text-danger"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td class="d-flex justify-content-start align-items-center">
+                        <a href="/edit/{{ id }}">
+                            <i class="fa-solid fa-pen-to-square text-warning"></i>
+                        </a>
+                        <span class="mx-3">|</span>
+                        <a href="/delete/{{ id }}">
+                            <i class="fa-solid fa-trash text-danger"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div> --}}
+
+

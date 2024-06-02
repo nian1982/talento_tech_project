@@ -1,0 +1,9 @@
+.carousel-item img {
+    max-height: 100vh; /* Altura máxima igual a la altura de la ventana */
+    object-fit: cover; /* Escalar la imagen para llenar el contenedor manteniendo la relación de aspecto */
+}
+
+
+.carousel-caption * {
+    color: white;
+}
