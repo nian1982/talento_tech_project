@@ -20,18 +20,60 @@
                         Categorias
                     </a>
                     <ul class="dropdown-menu">
+                        {{!-- <li>
+                            <a class="dropdown-item" href="/list">Anime</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/list-categories">Peliculas</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Dibujos Animados</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Documentales</a>
+                        </li> --}}
+                        <li>
+                            <a class="dropdown-item" href="/list/Anime">Anime</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/list/Peliculas">Películas</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/list/Dibujos Animados">Dibujos Animados</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/list/Documentales">Documentales</a>
+                        </li>
                         {{#each categorias}}
-                            <li>
-                                <a class="dropdown-item" href="/list/{{ nombre` }}">{{ nombre }}</a>
-                            </li>
+                            <li>{{ this }}</li>
                         {{/each}}
-                    </ul>                    
+                        {{#each categorias}}
+                            <li>{{ this.nombre }}</li>
+                        {{/each}}
+                        {{!-- {{#each categorias}}
+                            <li>
+                                <a class="dropdown-item" href="/list/{{ nombre }}">{{ nombre }}</a>
+                            </li>
+                        {{/each}} --}}
+                    </ul>
                 </li>
+
             </ul>
+
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
+
+
+        <form>
+            <select name="categoria">
+                {{#each categorias}}
+                    <option value="{{ this.nombre }}">{{ this.nombre }}</option>
+                {{/each}}
+            </select>
+        </form>
     </nav>

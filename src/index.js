@@ -31,6 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 /* --------------------------------- routes --------------------------------- */
+
 app.get('/', (req, res) => {
     res.render('index')
 });

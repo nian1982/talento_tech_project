@@ -11,6 +11,10 @@ const router = Router();
 
 router.get('/list-categories', categoriaController.getCategorias);
 
+router.get('/index', categoriaController.getCategorias);
+
+
+
 router.get('/delete/:id', async (req, res) => {
     try {
         const { id } = req.params

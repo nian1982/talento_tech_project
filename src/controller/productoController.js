@@ -4,10 +4,11 @@ export const getProductosPorCategoria = async (req, res) => {
     try {
         const { categoria } = req.params;
 
-        // Realizar un join con la tabla de categorías para obtener el ID de la categoría
+        // const categoria = 'Peliculas';
+
         const resultQuery = await pool.query("SELECT * FROM productos INNER JOIN categorias ON productos.categoria_id = categorias.id WHERE categorias.nombre = $1", [categoria]);
 
-        res.render('productos/view', { productos: resultQuery.rows });
+        res.render('productos/peliculasView', { productos: resultQuery.rows });
     } catch (error) {
         console.error("Error: ", error);
         res.status(500).json({ message: error.message });
