@@ -1,0 +1,51 @@
+<div class="container mt-5">
+{{#if productos.length}}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Activo</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col" class="col-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+
+                {{#each productos}}
+
+                    <tr>
+                        <td>{{ this.producto_nombre }}</td>
+                        <td>{{ this.descripcion }}</td>
+                        <td>{{ this.activo }}</td>
+                        <td>{{ this.categoria_nombre }}</td>
+
+                        <td class="d-flex justify-content-start align-items-center h-100">
+                            <a href="/edit/{{ id }}">
+                                <i class="fa-solid fa-pen-to-square text-warning"></i>
+                            </a>
+                            <span class="mx-3">|</span>
+                            <a href="/delete/{{ id }}">
+                                <i class="fa-solid fa-trash text-danger"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                {{/each}}               
+                
+            </tbody>
+        </table>
+{{ else }} 
+    <div class="card text-center mx-auto">
+            <div class="card-header">
+                <h3>No hay productos disponibles</h3>
+            </div>
+            <div class="card-body">
+                <p>No hay productos en esta categoría actualmente.</p>
+                <a href="/add" class="btn btn-primary">Añadir producto</a>
+            </div>
+        </div>
+{{/if}}
+</div>
+
+

@@ -18,6 +18,29 @@ export const getProductosPorCategoria = async (req, res) => {
 
 
 
+export const getProductos = async (req, res) => {
+    try {
+        // const resultQuery = await pool.query("SELECT * FROM productos join categorias on categorias.id = productos.categoria_id");
+        const resultQuery = await pool.query(`
+            SELECT 
+                productos.nombre AS producto_nombre, 
+                productos.descripcion, 
+                productos.activo, 
+                categorias.nombre AS categoria_nombre 
+            FROM productos 
+            JOIN categorias ON categorias.id = productos.categoria_id
+        `);
+        res.render('productos/productosList', { productos: resultQuery.rows });
+        console.log('productos/productosList = '+resultQuery.rows); // Para depuración
+    } catch (error) {
+        console.log("Error: ", error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
+
+
 
 // // Crear un nuevo producto
 // export const createProducto = async (req, res) => {

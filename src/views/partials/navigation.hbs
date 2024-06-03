@@ -45,18 +45,16 @@
                         <li>
                             <a class="dropdown-item" href="/list/Documentales">Documentales</a>
                         </li>
+                       
                         {{#each categorias}}
-                            <li>{{ this }}</li>
-                        {{/each}}
-                        {{#each categorias}}
-                            <li>{{ this.nombre }}</li>
-                        {{/each}}
-                        {{!-- {{#each categorias}}
                             <li>
                                 <a class="dropdown-item" href="/list/{{ nombre }}">{{ nombre }}</a>
                             </li>
-                        {{/each}} --}}
+                        {{/each}}
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/list-products">Admin</a>
                 </li>
 
             </ul>
@@ -65,15 +63,9 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+       
             </div>
         </div>
 
 
-        <form>
-            <select name="categoria">
-                {{#each categorias}}
-                    <option value="{{ this.nombre }}">{{ this.nombre }}</option>
-                {{/each}}
-            </select>
-        </form>
     </nav>

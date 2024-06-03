@@ -6,8 +6,9 @@ import {fileURLToPath} from 'url'
 import {engine} from 'express-handlebars'
 import personasRoutes from './routes/personas.routes.js'
 import categoriasRoutes from "./routes/categorias.routes.js";
-import peliculasRoutes from "./routes/peliculas.routes.js"
+import peliculasRoutes from "./routes/peliculas.routes.js";
 import { getNavBar } from "./controller/mainController.js";
+import productosRoutes from "./routes/productos.routes.js";
 
 /* ----------------------------- initialization ----------------------------- */
 const app = express();
@@ -39,6 +40,7 @@ app.get('/', (req, res) => {
 app.use(personasRoutes);
 app.use(categoriasRoutes);
 app.use(peliculasRoutes);
+app.use(productosRoutes)
 app.use(getNavBar);
 
 /* ------------------------------ Public files ------------------------------ */

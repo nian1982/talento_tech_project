@@ -1,0 +1,57 @@
+
+<div class="container mt-5">
+{{#if productos}}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col" class="col-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+
+                {{#each personas}}
+
+                    <tr>
+                        <td>{{ nombre }}</td>
+                        <td>{{ descripcion }}</td>
+                        <td>{{ activo }}</td>
+                        <td>{{ categoria }}</td>
+
+                        <td class="d-flex justify-content-start align-items-center">
+                            <a href="/edit/{{ id }}">
+                                <i class="fa-solid fa-pen-to-square text-warning"></i>
+                            </a>
+                            <span class="mx-3">|</span>
+                            <a href="/delete/{{ id }}">
+                                <i class="fa-solid fa-trash text-danger"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                {{/each}}               
+                
+            </tbody>
+        </table>
+{{ else }} 
+    <div class="card text-center mx-auto">
+        <div class="card-header">
+            <h3>
+                Debes crear una persona</h3>
+        </div>
+        <div class="card-body">
+            <p>Agregar producto</p>
+            <a href="/add" class="btn btn-primary">
+                Ir a crear</a>
+        </div>
+    </div>
+{{/if}}
+</div>
+
+
+
+
+
+

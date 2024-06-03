@@ -31,6 +31,18 @@ export const getNavBar = async (req, res) => {
     }
 };
 
+export const loadCategories = async (req, res, next) => {
+    try {
+        const resultQuery = await pool.query("SELECT * FROM categorias");
+        res.locals.categorias = resultQuery.rows;
+        console.log("Datos de categorias:", res.locals.categorias); // Para depuración
+        next();
+    } catch (error) {
+        console.error("Error al cargar las categorías:", error);
+        next(error);
+    }
+};
+
 
 
 // import { pool } from '../database.js';

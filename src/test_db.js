@@ -23,6 +23,17 @@ export const getProductosPorCategoria = async (req, res) => {
     }
 };
 
+export const getProductos = async (req, res) => {
+    try {
+        const resultQuery = await pool.query("SELECT * FROM productos");
+        console.log(resultQuery.rows); 
+    } catch (error) {
+        console.log("Error: ", error);
+        res.status(500).json({ message: error.message });
+    }
+};
 
-getPersonas();
+
+// getPersonas();
 // getProductosPorCategoria();
+getProductos()
