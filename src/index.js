@@ -41,7 +41,7 @@ app.use(personasRoutes);
 app.use(categoriasRoutes);
 app.use(peliculasRoutes);
 app.use(productosRoutes)
-app.use(getNavBar);
+// app.use(getNavBar);
 
 /* ------------------------------ Public files ------------------------------ */
 app.use(express.static(join(__dirname, 'public')))

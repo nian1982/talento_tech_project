@@ -16,14 +16,12 @@ export const getProductosPorCategoria = async (req, res) => {
 };
 
 
-
-
 export const getProductos = async (req, res) => {
     try {
         // const resultQuery = await pool.query("SELECT * FROM productos join categorias on categorias.id = productos.categoria_id");
         const resultQuery = await pool.query(`
             SELECT 
-                productos.nombre AS producto_nombre, 
+                productos.id, productos.nombre AS producto_nombre, 
                 productos.descripcion, 
                 productos.activo, 
                 categorias.nombre AS categoria_nombre 
@@ -39,44 +37,69 @@ export const getProductos = async (req, res) => {
 };
 
 
+export const getProductoById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        // const resultQuery = await pool.query("SELECT * FROM productos WHERE id = $1", [id]);
+
+        const resultQuery = await pool.query(`
+            SELECT 
+                productos.id,
+                productos.nombre, 
+                productos.descripcion, 
+                productos.activo, 
+                categorias.nombre AS categoria_nombre 
+            FROM productos 
+            JOIN categorias ON categorias.id = productos.categoria_id
+            WHERE productos.id = $1`, [id]);
+
+        const producto = resultQuery.rows[0];
+
+        
+
+        res.render('productos/productEdit', { producto });
+    } catch (error) {
+        console.error("Error al obtener el producto:", error);
+        res.status(500).json({ message: error.message });
+    }
+};
 
 
 
-// // Crear un nuevo producto
-// export const createProducto = async (req, res) => {
-//     try {
-//         const { nombre, descripcion, precio, imagen } = req.body;
-//         const newProducto = { nombre, descripcion, precio, imagen };
+export const updateProducto = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nombre, descripcion, activo, categoria_id } = req.body;
+        await pool.query(
+            "UPDATE productos SET nombre = $1, descripcion = $2, activo = $3, categoria_id = $4 WHERE id = $5",
+            [nombre, descripcion, activo === 'on', categoria_id, id]
+        );
 
-//         const resultQuery = await pool.query(
-//             "INSERT INTO productos (nombre, descripcion, precio, imagen) VALUES ($1, $2, $3, $4) RETURNING *", 
-//             [nombre, descripcion, precio, imagen]
-//         );
+        res.redirect('/list-products');
+    } catch (error) {
+        console.error("Error al actualizar el producto:", error);
+        res.status(500).json({ message: error.message });
+    }
+};
 
-//         res.redirect('/productos');
-//     } catch (error) {
-//         console.error("Error: ", error);
-//         res.status(500).json({ message: error.message });
-//     }
-// };
 
-// // Actualizar un producto
-// export const updateProducto = async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const { nombre, descripcion, precio, imagen } = req.body;
+export const createProduct = async (req, res) => {
+    try {
+        const { nombre, descripcion, categoria_id, image } = req.body;
 
-//         const resultQuery = await pool.query(
-//             "UPDATE productos SET nombre = $1, descripcion = $2, precio = $3, imagen = $4 WHERE id = $5 RETURNING *", 
-//             [nombre, descripcion, precio, imagen, id]
-//         );
+        const resultQuery = await pool.query(
+            "INSERT INTO productos (nombre, descripcion, categoria_id, image) VALUES ($1, $2, $3, $4) RETURNING *", 
+            [nombre, descripcion, categoria_id, image]
+        );
 
-//         res.redirect('/productos');
-//     } catch (error) {
-//         console.error("Error: ", error);
-//         res.status(500).json({ message: error.message });
-//     }
-// };
+        res.redirect('/list-productos');
+    } catch (error) {
+        console.error("Error: ", error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
 
 // // Eliminar un producto
 // export const deleteProducto = async (req, res) => {
