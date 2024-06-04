@@ -48,7 +48,7 @@ export const getProductoById = async (req, res) => {
                 productos.nombre, 
                 productos.descripcion, 
                 productos.activo, 
-                categorias.nombre AS categoria_nombre 
+                categorias.id AS categoria_nombre 
             FROM productos 
             JOIN categorias ON categorias.id = productos.categoria_id
             WHERE productos.id = $1`, [id]);
@@ -83,6 +83,10 @@ export const updateProducto = async (req, res) => {
 };
 
 
+export const getAddProduct =  (req, res) => {
+    res.render('productos/productAdd')
+};
+
 export const createProduct = async (req, res) => {
     try {
         const { nombre, descripcion, categoria_id, image } = req.body;
@@ -92,7 +96,7 @@ export const createProduct = async (req, res) => {
             [nombre, descripcion, categoria_id, image]
         );
 
-        res.redirect('/list-productos');
+        res.redirect('/list-products');
     } catch (error) {
         console.error("Error: ", error);
         res.status(500).json({ message: error.message });

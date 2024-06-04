@@ -1,56 +1,55 @@
 <div class="container mt-5">
     <div class="row mb-5 me-5">
         <div class="col-12">
-            <button class="btn btn-primary float-end btn-lg">
-                Agregar
-            </button>
+            <a class="btn btn-primary float-end btn-lg" href="/products-add" role="button">Agregar</a>
+
         </div>
     </div>
     {{#if productos.length}}
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Activo</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col" class="col-2">Acciones</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Categoria</th>
+                <th scope="col" class="col-2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
 
-                {{#each productos}}
+            {{#each productos}}
 
-                    <tr>
-                        <td>{{ this.producto_nombre }}</td>
-                        <td>{{ this.descripcion }}</td>
-                        <td>{{ this.activo }}</td>
-                        <td>{{ this.categoria_nombre }}</td>
+            <tr>
+                <td>{{ this.producto_nombre }}</td>
+                <td>{{ this.descripcion }}</td>
+                <td>{{ this.activo }}</td>
+                <td>{{ this.categoria_nombre }}</td>
 
-                        <td class="d-flex justify-content-start align-items-center h-100">
-                            <a href="/products-edit/{{ this.id }}">
-                                <i class="fa-solid fa-pen-to-square text-warning"></i>
-                            </a>
-                            <span class="mx-3">|</span>
-                            <a href="/products-delete/{{ this.id }}">
-                                <i class="fa-solid fa-trash text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
+                <td class="d-flex justify-content-start align-items-center h-100">
+                    <a href="/products-edit/{{ this.id }}">
+                        <i class="fa-solid fa-pen-to-square text-warning"></i>
+                    </a>
+                    <span class="mx-3">|</span>
+                    <a href="/products-delete/{{ this.id }}">
+                        <i class="fa-solid fa-trash text-danger"></i>
+                    </a>
+                </td>
+            </tr>
 
-                {{/each}}
+            {{/each}}
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
     {{ else }}
-        <div class="card text-center mx-auto">
-            <div class="card-header">
-                <h3>No hay productos disponibles</h3>
-            </div>
-            <div class="card-body">
-                <p>No hay productos en esta categoría actualmente.</p>
-                <a href="/add" class="btn btn-primary">Añadir producto</a>
-            </div>
+    <div class="card text-center mx-auto">
+        <div class="card-header">
+            <h3>No hay productos disponibles</h3>
         </div>
+        <div class="card-body">
+            <p>No hay productos en esta categoría actualmente.</p>
+            <a href="/add" class="btn btn-primary">Añadir producto</a>
+        </div>
+    </div>
     {{/if}}
 </div>

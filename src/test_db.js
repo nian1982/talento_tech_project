@@ -29,7 +29,7 @@ export const getProductos = async (req, res) => {
         console.log(resultQuery.rows); 
     } catch (error) {
         console.log("Error: ", error);
-        res.status(500).json({ message: error.message });
+        // res.status(500).json({ message: error.message });
     }
 };
 

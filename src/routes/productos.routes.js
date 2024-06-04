@@ -10,9 +10,11 @@ router.get('/list-products', productoController.getProductos);
 
 router.get('/products-edit/:id', productoController.getProductoById);
 
-router.post('/products-edit', productoController.updateProducto); 
+router.post('/products-edit/:id', productoController.updateProducto); 
 
-router.get("/products-add",   productoController.createProduct);
+router.get("/products-add", productoController.getAddProduct);
+
+router.post('/product-add', productoController.createProduct)
 
 
 
