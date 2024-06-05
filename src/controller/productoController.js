@@ -104,19 +104,17 @@ export const createProduct = async (req, res) => {
 };
 
 
+export const deleteProducto = async (req, res) => {
+    try {
+        const { id } = req.params;
 
-// // Eliminar un producto
-// export const deleteProducto = async (req, res) => {
-//     try {
-//         const { id } = req.params;
+        const resultQuery = await pool.query("DELETE FROM productos WHERE id = $1 RETURNING *", [id]);
 
-//         const resultQuery = await pool.query("DELETE FROM productos WHERE id = $1 RETURNING *", [id]);
-
-//         res.redirect('/productos');
-//     } catch (error) {
-//         console.error("Error: ", error);
-//         res.status(500).json({ message: error.message });
-//     }
-// };
+        res.redirect('/list-products');
+    } catch (error) {
+        console.error("Error: ", error);
+        res.status(500).json({ message: error.message });
+    }
+};
 
 
